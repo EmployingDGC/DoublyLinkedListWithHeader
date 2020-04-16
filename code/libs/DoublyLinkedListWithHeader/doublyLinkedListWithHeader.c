@@ -58,7 +58,6 @@ unsigned int lenList(List *list)
     return list -> len;
 }
 
-
 /*
  * Função para saber se uma lista está vazia
  * 
@@ -73,4 +72,18 @@ Bool listIsEmpty(List *list)
         return true;
     
     return false;
+}
+
+/*
+ * Função para adicionar um elemento no início da lista
+ * 
+ * param list: ponteiro para uma lista
+ * param value: valor do elemento que deseja adicionar
+ * 
+ * return true: se conseguir adicionar
+ * return false: se não conseguir adicionar
+*/
+Bool addFirstList(List *list, Value value)
+{
+
 }
