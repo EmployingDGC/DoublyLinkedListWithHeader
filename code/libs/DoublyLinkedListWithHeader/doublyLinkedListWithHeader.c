@@ -8,12 +8,12 @@ typedef struct editableValue
 } Value;
 
 
-typedef struct elements
+typedef struct element
 {
     Value value;
     unsigned int posX;
-    struct elements *next;
-    struct elements *previous;
+    struct element *next;
+    struct element *previous;
 } EList;
 
 
@@ -24,3 +24,23 @@ typedef struct header
     EList *last_element;
 } List;
 
+
+/*
+ * Função para criar uma nova lista
+ * 
+ * return List *: se conseguir criar a lista
+ * return NULL: se não foi possivel criar a lista
+*/
+List *newList()
+{
+    List *new = (List *) malloc(sizeof(List));
+
+    if (new == NULL)
+        return new;
+    
+    new -> first_element = NULL;
+    new -> last_element = NULL;
+    new -> len = 0;
+
+    return new;
+}
