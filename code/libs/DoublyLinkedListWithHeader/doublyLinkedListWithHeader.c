@@ -69,5 +69,8 @@ unsigned int lenList(List *list)
 */
 Bool listIsEmpty(List *list)
 {
-
+    if (list -> first_element == NULL && list -> last_element == NULL && list -> len == 0)
+        return true;
+    
+    return false;
 }
