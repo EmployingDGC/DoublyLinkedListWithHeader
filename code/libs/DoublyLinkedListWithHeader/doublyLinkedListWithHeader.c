@@ -44,3 +44,16 @@ List *newList()
 
     return new;
 }
+
+
+/*
+ * Função para obter o tamanho da lista
+ * 
+ * param list: ponteiro para uma lista
+ * 
+ * return unsigned int: tamanho da lista
+*/
+unsigned int lenList(List *list)
+{
+    return list -> len;
+}
