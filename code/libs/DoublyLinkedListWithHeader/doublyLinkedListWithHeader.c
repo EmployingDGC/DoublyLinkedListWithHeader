@@ -126,5 +126,23 @@ Bool addFirstList(List *list, Value value)
 */
 Bool addLastList(List *list, Value value)
 {
+    if (listIsEmpty(list))
+        return addFirstList(list, value);
+    
+    EList *new = (EList *) malloc(sizeof(EList));
 
+    if (new == NULL)
+        return false;
+    
+    new -> value = value;
+    new -> posX = lenList(list);
+    new -> next = NULL;
+    new -> previous = list -> last_element;
+
+    new -> previous -> next = new;
+
+    list -> last_element = new;
+    list -> len += 1;
+    
+    return true;
 }
