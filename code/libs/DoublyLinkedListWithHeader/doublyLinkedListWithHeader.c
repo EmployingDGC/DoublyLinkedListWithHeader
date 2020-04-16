@@ -85,5 +85,26 @@ Bool listIsEmpty(List *list)
 */
 Bool addFirstList(List *list, Value value)
 {
+    EList *new = (EList *) malloc(sizeof(EList));
 
+    if (new == NULL)
+        return false;
+    
+    new -> posX = 0;
+    new -> value = value;
+    new -> previous = NULL;
+    
+    if (listIsEmpty(list))
+    {
+        new -> next = NULL;
+        list -> last_element = new;
+    }
+    else
+        new -> next = list -> first_element;
+
+    list -> first_element = new;
+
+    list -> len += 1;
+
+    return true;
 }
