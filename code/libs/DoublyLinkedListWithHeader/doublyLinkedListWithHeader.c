@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "../Bool/bool.c"
 
 typedef struct editableValue
 {
@@ -45,7 +46,6 @@ List *newList()
     return new;
 }
 
-
 /*
  * Função para obter o tamanho da lista
  * 
@@ -56,4 +56,18 @@ List *newList()
 unsigned int lenList(List *list)
 {
     return list -> len;
+}
+
+
+/*
+ * Função para saber se uma lista está vazia
+ * 
+ * param list: ponteiro para uma lista
+ * 
+ * return true: se a lista estiver vazia
+ * return false: se a lista não estiver vazia
+*/
+Bool listIsEmpty(List *list)
+{
+
 }
