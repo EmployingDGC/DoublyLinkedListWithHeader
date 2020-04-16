@@ -114,3 +114,17 @@ Bool addFirstList(List *list, Value value)
 
     return true;
 }
+
+/*
+ * Função para adicionar um elemento no fim da lista
+ * 
+ * param list: ponteiro para uma lista
+ * param value: valor do elemento que deseja adicionar
+ * 
+ * return true: se conseguir adicionar
+ * return false: se não conseguir adicionar
+*/
+Bool addLastList(List *list, Value value)
+{
+
+}
