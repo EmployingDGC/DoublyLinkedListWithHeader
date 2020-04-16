@@ -100,7 +100,13 @@ Bool addFirstList(List *list, Value value)
         list -> last_element = new;
     }
     else
+    {
         new -> next = list -> first_element;
+        new -> next -> previous = new;
+
+        for (EList *aux = new -> next; aux != NULL; aux = aux -> next)
+            aux -> posX += 1;
+    }
 
     list -> first_element = new;
 
