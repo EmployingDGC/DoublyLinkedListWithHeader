@@ -159,5 +159,47 @@ Bool addLastList(List *list, Value value)
 */
 Bool addIndexList(List *list, Value value, int posX)
 {
+    if (listIsEmpty(list))
+        return addFirstList(list, value);
+    
+    if (posX < 0)
+    {
+        posX += lenList(list);
+        
+        if (posX < 0)
+            posX = 0;
+    }
+    
+    if (posX == 0)
+        return addFirstList(list, value);
+    
+    if (posX >= lenList(list))
+        return addLastList(list, value);
+    
+    EList *new = (EList *) malloc(sizeof(EList));
 
+    if (new == NULL)
+        return false;
+
+    new -> posX = posX;
+    new -> value = value;
+
+    EList *aux;
+    if (posX > lenList(list) / 2)
+        for (aux = list -> last_element; aux != posX; aux = aux -> previous);
+    else
+        for (aux = list -> first_element; aux != posX; aux = aux -> next);
+    
+    new -> previous = aux -> previous;
+    new -> next = aux;
+
+    aux -> previous -> next = new;
+    aux -> previous = new;
+
+    for (aux; aux != NULL; aux = aux -> next)
+        aux -> posX += 1;
+    
+    list -> len += 1;
+
+    return true;
 }
