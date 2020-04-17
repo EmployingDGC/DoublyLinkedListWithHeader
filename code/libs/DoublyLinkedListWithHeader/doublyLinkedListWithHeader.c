@@ -243,5 +243,21 @@ Bool delFirstList(List *list)
 */
 Bool delLastList(List *list)
 {
+    if (listIsEmpty(list))
+        return false;
+    
+    EList *aux = list -> last_element;
 
+    if (aux -> previous != NULL)
+        aux -> previous -> next = NULL;
+    else
+        list -> first_element = NULL;
+
+    list -> last_element = aux -> previous;
+
+    free(aux);
+
+    list -> len -= 1;
+
+    return true;
 }
