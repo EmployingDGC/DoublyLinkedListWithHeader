@@ -316,5 +316,18 @@ Bool delIndexList(List *list, int posX)
 */
 unsigned int extendList(List *list1, List *list2)
 {
+    unsigned int qty_add = 0;
 
+    if (listIsEmpty(list2))
+        return qty_add;
+    
+    for (EList *aux = list2 -> first_element; aux != NULL; aux = aux -> next)
+    {
+        if (!addLastList(list1, aux -> value))
+            return qty_add;
+        
+        qty_add += 1;
+    }
+    
+    return qty_add;
 }
