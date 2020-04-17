@@ -232,3 +232,16 @@ Bool delFirstList(List *list)
 
     return true;
 }
+
+/*
+ * Função para remover um elemento do fim da lista
+ * 
+ * param list: ponteiro para uma lista
+ * 
+ * return true: se conseguir remover
+ * return false: se não conseguir remover
+*/
+Bool delLastList(List *list)
+{
+
+}
