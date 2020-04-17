@@ -214,5 +214,21 @@ Bool addIndexList(List *list, Value value, int posX)
 */
 Bool delFirstList(List *list)
 {
+    if (listIsEmpty(list))
+        return false;
+    
+    EList *aux = list -> first_element;
 
+    if (aux -> next != NULL)
+        aux -> next -> previous = NULL;
+    else
+        list -> last_element = NULL;
+
+    list -> first_element = aux -> next;
+
+    free(aux);
+
+    list -> len -= 1;
+
+    return true;
 }
