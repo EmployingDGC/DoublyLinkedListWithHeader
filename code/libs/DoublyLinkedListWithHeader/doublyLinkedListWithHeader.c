@@ -203,3 +203,16 @@ Bool addIndexList(List *list, Value value, int posX)
 
     return true;
 }
+
+/*
+ * Função para remover um elemento do início da lista
+ * 
+ * param list: ponteiro para uma lista
+ * 
+ * return true: se conseguir remover
+ * return false: se não conseguir remover
+*/
+Bool delFirstList(List *list)
+{
+
+}
