@@ -273,5 +273,35 @@ Bool delLastList(List *list)
 */
 Bool delIndexList(List *list, int posX)
 {
+    if (listIsEmpty(list) || posX >= lenList(list))
+        return false;
+    
+    if (posX < 0)
+    {
+        posX += lenList(list);
+        
+        if (posX < 0)
+            return false;
+    }
+    
+    if (posX == 0)
+        return delFirstList(list);
+    
+    if (posX == lenList(list) - 1)
+        return delLastList(list);
+    
+    EList *aux;
+    if (posX > lenList(list) / 2)
+        for (aux = list -> last_element; aux != posX; aux = aux -> previous);
+    else
+        for (aux = list -> first_element; aux != posX; aux = aux -> next);
+    
+    aux -> previous -> next = aux -> next;
+    aux -> next -> previous = aux -> previous;
 
+    free(aux);
+
+    list -> len -= 1;
+
+    return true;
 }
