@@ -146,3 +146,18 @@ Bool addLastList(List *list, Value value)
     
     return true;
 }
+
+/*
+ * Função para adicionar um elemento na posição X da lista
+ * 
+ * param list: ponteiro para uma lista
+ * param value: valor do elemento que deseja adicionar
+ * param posX: posição a ser adicionado o elemento
+ * 
+ * return true: se conseguir adicionar
+ * return false: se não conseguir adicionar
+*/
+Bool addIndexList(List *list, Value value, int posX)
+{
+
+}
