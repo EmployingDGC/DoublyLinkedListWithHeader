@@ -305,3 +305,16 @@ Bool delIndexList(List *list, int posX)
 
     return true;
 }
+
+/*
+ * Função para adicionar os elementos da segunda lista no fim da primeira
+ * 
+ * param list1: ponteiro para a primeira lista
+ * param list2: ponteiro para a segunda lista
+ * 
+ * return unsigned int: quantos elementos foram adicionados com sucesso
+*/
+unsigned int extendList(List *list1, List *list2)
+{
+
+}
