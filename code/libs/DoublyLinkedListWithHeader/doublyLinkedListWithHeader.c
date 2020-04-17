@@ -261,3 +261,17 @@ Bool delLastList(List *list)
 
     return true;
 }
+
+/*
+ * Função para remover um elemento de uma posição da lista
+ * 
+ * param list: ponteiro para uma lista
+ * param posX: posição a ser removida
+ * 
+ * return true: se conseguir remover
+ * return false: se não conseguir remover
+*/
+Bool delIndexList(List *list, int posX)
+{
+
+}
