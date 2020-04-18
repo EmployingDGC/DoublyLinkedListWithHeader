@@ -321,7 +321,7 @@ unsigned int extendList(List *list1, List *list2)
     if (listIsEmpty(list2))
         return qty_add;
     
-    for (EList *aux = list2 -> first_element; aux != NULL; aux = aux -> next)
+    for (EList *aux = list2 -> first_element; aux != NULL && qty_add != lenList(list2); aux = aux -> next)
     {
         if (!addLastList(list1, aux -> value))
             return qty_add;
