@@ -343,5 +343,22 @@ unsigned int extendList(List *list1, List *list2)
 */
 EList *getElementList(List *list, int pos_x)
 {
+    if (listIsEmpty(list) || pos_x >= lenList(list))
+        return NULL;
+    
+    if (pos_x < 0)
+    {
+        pos_x += lenList(list);
+        
+        if (pos_x < 0)
+            return NULL;
+    }
 
+    EList *aux;
+    if (pos_x > lenList(list) / 2)
+        for (aux = list -> last_element; aux != pos_x; aux = aux -> previous);
+    else
+        for (aux = list -> first_element; aux != pos_x; aux = aux -> next);
+    
+    return aux;
 }
