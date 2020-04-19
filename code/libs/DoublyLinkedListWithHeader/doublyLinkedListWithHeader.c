@@ -362,3 +362,17 @@ EList *getElementList(List *list, int pos_x)
     
     return aux;
 }
+
+/*
+ * Função para pegar o próximo elemento de uma lista
+ * 
+ * param list: ponteiro para uma lista
+ * param element: ponteiro para um elemento de lista, caso NULL retornara o primeiro elemento da lista
+ * 
+ * return EList *: se tiver próximo elemento
+ * return NULL: se não tiver próximo elemento
+*/
+EList *getNextElementList(List *list, EList *current)
+{
+
+}
