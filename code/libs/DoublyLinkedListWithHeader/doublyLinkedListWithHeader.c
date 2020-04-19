@@ -12,7 +12,7 @@ typedef struct editableValue
 typedef struct element
 {
     Value value;
-    unsigned int posX;
+    unsigned int pos_x;
     struct element *next;
     struct element *previous;
 } EList;
@@ -90,7 +90,7 @@ Bool addFirstList(List *list, Value value)
     if (new == NULL)
         return false;
     
-    new -> posX = 0;
+    new -> pos_x = 0;
     new -> value = value;
     new -> previous = NULL;
     
@@ -105,7 +105,7 @@ Bool addFirstList(List *list, Value value)
         new -> next -> previous = new;
 
         for (EList *aux = new -> next; aux != NULL; aux = aux -> next)
-            aux -> posX += 1;
+            aux -> pos_x += 1;
     }
 
     list -> first_element = new;
@@ -135,7 +135,7 @@ Bool addLastList(List *list, Value value)
         return false;
     
     new -> value = value;
-    new -> posX = lenList(list);
+    new -> pos_x = lenList(list);
     new -> next = NULL;
     new -> previous = list -> last_element;
 
@@ -152,28 +152,28 @@ Bool addLastList(List *list, Value value)
  * 
  * param list: ponteiro para uma lista
  * param value: valor do elemento que deseja adicionar
- * param posX: posição a ser adicionado o elemento
+ * param pos_x: posição a ser adicionado o elemento
  * 
  * return true: se conseguir adicionar
  * return false: se não conseguir adicionar
 */
-Bool addIndexList(List *list, Value value, int posX)
+Bool addIndexList(List *list, Value value, int pos_x)
 {
     if (listIsEmpty(list))
         return addFirstList(list, value);
     
-    if (posX < 0)
+    if (pos_x < 0)
     {
-        posX += lenList(list);
+        pos_x += lenList(list);
         
-        if (posX < 0)
-            posX = 0;
+        if (pos_x < 0)
+            pos_x = 0;
     }
     
-    if (posX == 0)
+    if (pos_x == 0)
         return addFirstList(list, value);
     
-    if (posX >= lenList(list))
+    if (pos_x >= lenList(list))
         return addLastList(list, value);
     
     EList *new = (EList *) malloc(sizeof(EList));
@@ -181,14 +181,14 @@ Bool addIndexList(List *list, Value value, int posX)
     if (new == NULL)
         return false;
 
-    new -> posX = posX;
+    new -> pos_x = pos_x;
     new -> value = value;
 
     EList *aux;
-    if (posX > lenList(list) / 2)
-        for (aux = list -> last_element; aux != posX; aux = aux -> previous);
+    if (pos_x > lenList(list) / 2)
+        for (aux = list -> last_element; aux != pos_x; aux = aux -> previous);
     else
-        for (aux = list -> first_element; aux != posX; aux = aux -> next);
+        for (aux = list -> first_element; aux != pos_x; aux = aux -> next);
     
     new -> previous = aux -> previous;
     new -> next = aux;
@@ -197,7 +197,7 @@ Bool addIndexList(List *list, Value value, int posX)
     aux -> previous = new;
 
     for (aux; aux != NULL; aux = aux -> next)
-        aux -> posX += 1;
+        aux -> pos_x += 1;
     
     list -> len += 1;
 
@@ -266,35 +266,35 @@ Bool delLastList(List *list)
  * Função para remover um elemento de uma posição da lista
  * 
  * param list: ponteiro para uma lista
- * param posX: posição a ser removida
+ * param pos_x: posição a ser removida
  * 
  * return true: se conseguir remover
  * return false: se não conseguir remover
 */
-Bool delIndexList(List *list, int posX)
+Bool delIndexList(List *list, int pos_x)
 {
-    if (listIsEmpty(list) || posX >= lenList(list))
+    if (listIsEmpty(list) || pos_x >= lenList(list))
         return false;
     
-    if (posX < 0)
+    if (pos_x < 0)
     {
-        posX += lenList(list);
+        pos_x += lenList(list);
         
-        if (posX < 0)
+        if (pos_x < 0)
             return false;
     }
     
-    if (posX == 0)
+    if (pos_x == 0)
         return delFirstList(list);
     
-    if (posX == lenList(list) - 1)
+    if (pos_x == lenList(list) - 1)
         return delLastList(list);
     
     EList *aux;
-    if (posX > lenList(list) / 2)
-        for (aux = list -> last_element; aux != posX; aux = aux -> previous);
+    if (pos_x > lenList(list) / 2)
+        for (aux = list -> last_element; aux != pos_x; aux = aux -> previous);
     else
-        for (aux = list -> first_element; aux != posX; aux = aux -> next);
+        for (aux = list -> first_element; aux != pos_x; aux = aux -> next);
     
     aux -> previous -> next = aux -> next;
     aux -> next -> previous = aux -> previous;
@@ -330,4 +330,18 @@ unsigned int extendList(List *list1, List *list2)
     }
     
     return qty_add;
+}
+
+/*
+ * Função para pegar um elemento de uma lista de acordo com a posição
+ * 
+ * param list: ponteiro para uma lista
+ * param pos_x: posição a ser buscada
+ * 
+ * return Elist *: se achou o elemento
+ * return NULL: se não achou o elemento
+*/
+EList *getElementList(List *list, int pos_x)
+{
+
 }
