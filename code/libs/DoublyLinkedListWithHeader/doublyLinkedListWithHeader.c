@@ -374,5 +374,11 @@ EList *getElementList(List *list, int pos_x)
 */
 EList *getNextElementList(List *list, EList *current)
 {
-
+    if (listIsEmpty(list))
+        return NULL;
+    
+    if (current == NULL)
+        return list -> first_element;
+    
+    return current -> next;
 }
